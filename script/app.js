@@ -5,14 +5,19 @@
         dropZones = document.querySelectorAll('.drop-zone'),
         gameBoard = document.querySelector(".puzzle-board");
     // add event handling here -> how is the user going to use our app?
-    // what triggers do we need?
+    // what triggers do we need
+
+    let imageNames = ['topLeft', 'topRight', 'BottomLeft', 'BottomRight'];
 
     function changeImageSet() {
         // change all the image elements on the page -> draggable image sources,
-        // let newBackgroundImage = `images/backGround${this.dataset.bgkey}.jpg`; (contenced down to one line)
-        //dynamically changes the background image by grabbing the data number using bgkey
+        imageNames.forEach((piece, index) => {
+                puzzlePieces[index].src = `images/${piece + this.dataset.bgkey}.jpg`;
+            })
+            // let newBackgroundImage = `images/backGround${this.dataset.bgkey}.jpg`; (contenced down to one line)
+            //dynamically changes the background image by grabbing the data number using bgkey
 
-        gameBoard.style.backgroundImage = `url(images/backGround${this.dataset.bgkey}.jpg)`;
+        gameBoard.style.backgroundImage = `url(i mages/backGround${this.dataset.bgkey}.jpg)`;
     } // and set the drop zone background
 
     // debugger;
