@@ -30,13 +30,6 @@
             }
         })
 
-
-
-
-
-
-
-
     } // and set the drop zone background
 
     // debugger;
