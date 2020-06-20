@@ -59,7 +59,7 @@
         console.log('dropped something on me');
         let droppedImage = event.dataTransfer.getData('draggedImg');
         //if the length of the number of children is 0 append child 
-        {
+        if (event.currentTarget.children.length === 0) {
             event.target.appendChild(document.querySelector(`#${droppedImage}`));
         }
 
