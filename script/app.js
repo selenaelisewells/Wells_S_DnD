@@ -3,7 +3,8 @@
     const puzzleButtons = document.querySelectorAll('#buttonHolder img'),
         puzzlePieces = document.querySelectorAll('.puzzle-image'),
         dropZones = document.querySelectorAll('.drop-zone'),
-        gameBoard = document.querySelector(".puzzle-board");
+        gameBoard = document.querySelector(".puzzle-board"),
+        piecesBox = document.querySelector('.puzzle-pieces');
     // add event handling here -> how is the user going to use our app?
     // what triggers do we need
 
@@ -17,7 +18,25 @@
             // let newBackgroundImage = `images/backGround${this.dataset.bgkey}.jpg`; (contenced down to one line)
             //dynamically changes the background image by grabbing the data number using bgkey
 
-        gameBoard.style.backgroundImage = `url(i mages/backGround${this.dataset.bgkey}.jpg)`;
+        gameBoard.style.backgroundImage = `url(images/backGround${this.dataset.bgkey}.jpg)`;
+        console.log(dropZones)
+
+        dropZones.forEach((dropZone) => {
+
+            while (dropZone.firstChild) {
+
+                let currentChild = dropZone.removeChild(dropZone.firstChild);
+                piecesBox.appendChild(currentChild);
+            }
+        })
+
+
+
+
+
+
+
+
     } // and set the drop zone background
 
     // debugger;
@@ -39,8 +58,12 @@
     function allowDrop(event) {
         console.log('dropped something on me');
         let droppedImage = event.dataTransfer.getData('draggedImg');
+        //if the length of the number of children is 0 append child 
+        if (event.currentTarget.children.length === 0) {
+            event.target.appendChild(document.querySelector(`#${droppedImage}`));
+        }
 
-        event.target.appendChild(document.querySelector(`#${droppedImage}`));
+
 
     }
 
